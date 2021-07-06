@@ -1,0 +1,299 @@
+body{
+	margin: 0;
+    width: 100%;
+    height: 100vh;
+/*    background: url("Images/columns.jpg");*/
+/*  background:url("Images/black_sand.jpg");*/
+/*    background: url("Images/board.jpg");*/
+    background: url("Images/peyzaj.jpg");
+/*    background: url("Images/magaxat.jpg");*/
+    background-repeat: no-repeat;
+    background-size: 100% 100vh;
+    user-select: none;
+    font-family: 'Roboto', sans-serif;
+}
+/*//======================================================================================
+//============++++++++++++++++++++++ STARTING PAGE ++++++++++++++++++======================
+//==========================================================================================*/
+.starting_page{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background: url("Images/grass.jpg");
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+}       
+.starting_btns{
+    display: block;
+    width: 30%; 
+    margin: 1% auto;
+    padding: 10px 30px;
+    background-image: url("Images/board.jpg"); 
+    outline: none;
+    border:0.1vw solid #222;
+    cursor: pointer;
+    font-size: 2vw;
+}
+.starting_btns:hover{
+    transform: scale(1.1);
+}
+
+/*//======================================================================================
+//============++++++++++++++++++++++ MAIN PAGE ++++++++++++++++++======================
+//==========================================================================================*/
+
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%
+}
+.closing_icon{
+    width: 20%;
+    position: absolute;
+    right: 2%;
+    top: 35%;
+    display: none;
+}
+.closing_icon2{
+    width: 50%;
+    position: absolute;
+    left: 25%;
+    top: -5%;   
+    z-index: 2;
+    display: none;
+    height: 100vh;
+}
+/*//======================================================================================
+//============++++++++++++++++++++++ DO YOU EVEN BOX  ++++++++++++++++++======================
+//==========================================================================================*/
+
+.doyoueven_text_container {
+    margin: 3% auto;
+    height: 17vw;
+    width: 80%;
+    background: url(Images/board.jpg);
+    background-size: 100%;
+    border-radius: 0 10vw 0 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5.5vw;
+    color: #414042;
+}
+.gentleman_img {
+    width: 20%;
+    margin-right: -5%;
+}
+
+/*//======================================================================================
+//============++++++++++++++++++++++ QUESTIONS BOX  ++++++++++++++++++======================
+//==========================================================================================*/
+
+.questions_input{
+    width: 79.5vw;
+    height: 7vw;
+    background: #D6A771;
+    box-sizing: border-box;
+    font-size: 3vw;
+    padding-left: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: -2%;
+    margin-bottom: 1%;
+}
+.question_container{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.question_mark{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*//======================================================================================
+//============++++++++++++++++++++++ ANSWER BOX  ++++++++++++++++++======================
+//==========================================================================================*/
+
+.answer_box{
+    width: 80%;
+    height: 35vw;
+    background: #555; 
+    margin: 1% auto;
+    display: flex;
+    position: relative
+}
+.answer_box2{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: absolute;
+}
+.answers_partly_boxes{
+    width: 50%;
+    height: 100%;
+}
+
+
+.answers_input {
+    width: 79.5vw;
+    height: 7vw;
+    background: #eee;
+    border: 2px solid #222;
+    font-size: 3vw;
+    padding-left: 2%;
+    box-sizing: border-box;
+}
+
+.answers {
+    width: 100%;
+    height: 20%;
+    background: #222;
+    border: 0.1px solid #aaa;
+    box-sizing: border-box;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3vw;
+    font-family: 'Montserrat', sans-serif;   
+}
+.real_answers{
+    background: green;
+}
+.margat{
+    animation: margat 0.5s ease-out 4; 
+}
+@keyframes margat{
+    50%{
+        background: #555;
+        font-size: 1.8em;
+    }
+}
+
+/*//======================================================================================
+//============++++++++++++++++++++++ STATISTICS BOX  ++++++++++++++++++======================
+//==========================================================================================*/
+article{
+    width: 80vh;
+    height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+}
+
+.statistics{
+    height: 10vw;
+    font-size: 3vw;
+    background: #E6B87D;
+    color:black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    font-weight: bolder;
+}
+.time{
+    height: 3vw;
+    font-size: 3.5vw;
+    color: #222;
+}
+.score{
+    height: 3vw;
+    color: blue;
+    font-size: 3.5vw;
+}
+.guesses{
+    height: 3vw;
+    color: green;
+    font-size: 3.5vw;
+}
+.shaking{
+    animation: shake 1s linear 1;
+}
+@keyframes shake{
+    30%{
+        transform: rotate(10deg);
+    }
+    70%{
+        transform: rotate(-10deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+
+}
+
+/*//======================================================================================
+//============++++++++++++++++++++++ MEDIA QUERIES ++++++++++++++++++======================
+//==========================================================================================*/
+@media only screen and (min-width:800px){
+    .doyoueven_text_container{
+        height: 22vh;
+        width: 100vh;
+        font-size: 6vh;
+        margin-top: 1%;
+    }
+    .starting_btns{
+        padding: 1vw 5vw;
+    }
+    .questions_input{
+        width: 100vh;
+        height: 7.5vh;
+        font-size: 2vw;
+    }
+
+    .answers_input{
+        width: 100vh;
+        height: 7.5vh;
+        font-size: 2vw;
+    }
+    .answer_box{
+        width: 100vh; 
+        height: 40vh;
+    }
+    .answers{
+        height: 8vh;
+        font-size: 2vw;
+    }
+    .statistics{
+        height: 13vh;
+        font-size: 2vw;
+        width: 30%;
+    }
+    .time{
+        height: 3vw;
+        font-size: 2.5vw;
+        color: #222;
+    }
+    .score{
+        height: 3vw;
+        color: blue;
+        font-size: 2.5vw;
+    }
+    .guesses{
+        height: 3vw;
+        color: green;
+        font-size: 2.5vw;
+    }
+}
+
+
+
+
+
+
+
+
