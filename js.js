@@ -1,7 +1,3 @@
-document.onload(function(){
-    
-})
-
 // ========================= Starting the game ======================= //
 $(".start_btn").click(function(){
     $(".starting_page").fadeOut("slow")
@@ -10,27 +6,39 @@ $(".start_btn").click(function(){
 
 //======================== GETTING QUESTIONS ======================//
 let questions = [
-    ["How can we ...", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
-    ["How is this ...", "a", "s", "d", "f", "g", "h", "j", "k", "l", ";"],
-    ["How we should ...", "q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+    ["Numbers from 1 to 10 ?"],
+    ["Letters from a to j ?"],
+    ["Why is my girlfriend so ...?"],
+    ["Can pigs eat ... ?"],
+    ["Why do people ... ?"]
+]
+
+//======================== GETTING QUESTIONS ======================//
+let answers = [
+    ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+    ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"],
+    ["mean to me", "cute", "clingy","annoying", "insecure", "emotional", "amazing", "sensitive", "jealous", "mean"],
+    ["chocolate", "humans", "grapes","bananas", "tomatoes", "onions", "watermelon", "watermelon rind", "potatoes", "oranges"],
+    ["snore", "yawn", "cheat","say bless you", "have sex", "get hiccups", "lie", "smoke", "talk in their sleep", "eat corn starch"],
 ]
 
 // ==================== Filling Answers and Question=======================//
-//question,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9
-let i = 0
-function filling_Answers_Questions(questions[i]){
-    $(".question_container").html(questions[i][0])
-    $(".real_answers0").html(questions[i][1])
-    $(".real_answers1").html(questions[i][2])
-    $(".real_answers2").html(questions[i][3])
-    $(".real_answers3").html(questions[i][4])
-    $(".real_answers4").html(questions[i][5])
-    $(".real_answers5").html(questions[i][6])
-    $(".real_answers6").html(questions[i][7])
-    $(".real_answers7").html(questions[i][8])
-    $(".real_answers8").html(questions[i][9])
-    $(".real_answers9").html(questions[i][10])
+let i = 0;
+function filling_Answers_Questions(questions,answers){
+    $(".question_container").html(questions[i])
+    $(".real_answers0").html(answers[i][0])
+    $(".real_answers1").html(answers[i][1])
+    $(".real_answers2").html(answers[i][2])
+    $(".real_answers3").html(answers[i][3])
+    $(".real_answers4").html(answers[i][4])
+    $(".real_answers5").html(answers[i][5])
+    $(".real_answers6").html(answers[i][6])
+    $(".real_answers7").html(answers[i][7])
+    $(".real_answers8").html(answers[i][8])
+    $(".real_answers9").html(answers[i][9])
 }
+
+filling_Answers_Questions(questions, answers);
 
 // ==================== Filling Scores and Guesses =======================//
 let guesses = 3;
@@ -52,8 +60,8 @@ $(".answers_input").on('keypress',function(e) {
     if(e.which == 13) {
         let guess = $(".answers_input").val();
         // Cheking if the guess in answers //
-        if (questions_list[i].includes(guess)) {
-            index = answers_list.indexOf(guess)
+        if (answers[i].includes(guess)) {
+            index = answers[i].indexOf(guess)
             let removing_divs = $(".removing_divs" + index);
             if ($(".removing_divs" + index).html() == 0) {
                 $(".real_answers" + index).toggleClass("margat");
@@ -67,8 +75,11 @@ $(".answers_input").on('keypress',function(e) {
                 //===== IF OPPENED =======//
                 oppened++;
                 if (oppened == 10) {
-                    setTimeout(function(){alert("WOOOOOOOW")},1500)
-                    reset();
+                    setTimeout(function(){
+                        alert("WOOOOOOOW")
+                        next();
+                        reset();
+                    },1500)
                 }
             }
         }else{
@@ -81,9 +92,9 @@ $(".answers_input").on('keypress',function(e) {
                 // ================ Reseting All ================ //
                 guesses = 3;
                 $(".guesses").css("color","green");
-                reset();
-                $(".closing_icon2").css("display","block");
-                setTimeout(function(){$(".closing_icon2").css("display","none");},1500)
+                showAllAnswers();
+                $(".closing_icon").css("display","block");
+                setTimeout(function(){$(".closing_icon").css("display","none");},1500)
 
             }else if(guesses == 2){
                 $(".guesses").css("color","#f6f578");
@@ -146,15 +157,45 @@ function startSeconds(){
 function asigningScore(score){
     $(".score").html(score)
 }
+
+
+//======================== SHOWING ANSWERS ======================//
+function showAllAnswers(){
+    oppened = 0;
+    minutes = 0;
+    seconds = 0;
+    $(".score").html("- - - -")
+    $(".removing_divs").animate({width:"0%"},"2s")
+    $(".removing_divs").html("")
+    $(".removing_divs").css("color","white")
+    score = 0
+}
+
 //======================== RESETING EVERYTHING ======================//
 function reset(){
     oppened = 0;
     minutes = 0;
     seconds = 0;
-    $(".score").html("----")
-    $(".removing_divs").animate({width:"100%"},"2s");
+    $(".score").html("- - - -")
+    $(".removing_divs").animate({width:"100%"},"2s")
     $(".removing_divs").html("")
     $(".removing_divs").css("color","white")
-    setTimeout(fillingScores,1000);
-    score = 0;
+    setTimeout(fillingScores,500)
+    score = 0
+    // guesses = 3;
+    filling_Answers_Questions(questions, answers)
 }
+
+$("#reset").click(reset);
+//======================== SHOWING NEXT QUESTION ======================//
+function next() {
+    i++;
+    if(answers[i] == undefined){
+        i = 0;
+    }
+}
+
+$("#next").click(() => {
+    next();
+    reset();
+});
